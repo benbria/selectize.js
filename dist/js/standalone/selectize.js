@@ -1534,7 +1534,10 @@
 			}
 	
 			if ((self.isFull() || self.isInputHidden) && !(IS_MAC ? e.metaKey : e.ctrlKey)) {
-				e.preventDefault();
+				if (self.isOpen && self.$activeOption)
+					self.setValue('');
+				else
+					e.preventDefault();
 				return;
 			}
 		},
